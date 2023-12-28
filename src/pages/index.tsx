@@ -7,8 +7,9 @@ import { GradientButton } from '@/components/buttons/Button';
 import { FullContainer } from '@/components/containers/fullContainer';
 import { ParagraphStyled } from '@/components/texts/paragraph/styles';
 import { HeaderMenu } from '@/components/menu/headerMenu';
-import { FaGoogle } from "react-icons/fa";
+import { FaArrowRight, FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+
 export default function Home() {
   return (
     <FlexContainer alignItems='start' justifyContent='start' direction='col' gradient='dark' height='screen' width='screen'>
@@ -29,11 +30,11 @@ export default function Home() {
                   <InputComponent placeholder='Username' id='username' name='username' IconElement={CiUser}></InputComponent>
                   <InputComponent placeholder='Password' id='password' name='password' IconElement={CiLock}></InputComponent>
                 </FlexContainer>
-                <GradientButton text='Login' />
+                <GradientButton text='Login' IconElement={FaArrowRight} IconPosition='right' iconColor='#000000' />
               </FlexContainer>
             </FlexContainer>
             <FlexContainer direction='col' gapY={20}>
-              <GradientButton text='Login With Google' IconElement={FaGoogle} IconPosition='left'></GradientButton>
+              <GradientButton text='Login With Google' IconElement={FaGoogle} IconPosition='left' gradient='google'></GradientButton>
               <GradientButton text='Login With Facebook' IconElement={FaFacebook} IconPosition='left' gradient='facebook'></GradientButton>
             </FlexContainer>
           </FlexContainer>
