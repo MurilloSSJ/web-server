@@ -90,9 +90,14 @@ export const FlexContainerStyled = styled('div', {
 
             }
         },
+        dark: {
+            true: {
+                background: '$dark_500'
+            },
+        },
         height: {
             screen: {
-                height: '100vh'
+                minHeight: '100vh'
             },
             false: {
 
