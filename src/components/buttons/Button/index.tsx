@@ -9,11 +9,12 @@ interface GradientButtonProps {
     disabled?: boolean;
     IconElement?: IconType;
     IconPosition?: 'left' | 'right';
-    gradient?: 'primmary' | 'facebook';
+    iconColor?: string;
+    gradient?: 'primmary' | 'facebook' | 'google';
 
 }
 
-export const GradientButton = ({ text, onClick, type, disabled, IconElement, IconPosition, gradient }: GradientButtonProps) => {
+export const GradientButton = ({ text, onClick, type, disabled, IconElement, IconPosition, gradient, iconColor }: GradientButtonProps) => {
     return (
         <FlexContainer alignItems="center" gapX={20}>
             {IconElement &&
@@ -28,7 +29,7 @@ export const GradientButton = ({ text, onClick, type, disabled, IconElement, Ico
                         }
                     }
                     size={30}
-                    color="#EFF1ED"
+                    color={iconColor ? iconColor : '#EFF1ED'}
                 />
             }
             <ButtonStyled
