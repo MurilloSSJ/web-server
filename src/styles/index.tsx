@@ -49,6 +49,7 @@ export const {
 
             green_500: '#144709',
             green_400: '#15860C',
+            green_300: '#0AFF6C',
             green_100: '#DEFFD8',
 
             red_500: '#642221',
@@ -71,6 +72,10 @@ export const {
             dark_gradient: 'linear-gradient(to right, rgba(3,25,39,1) 0%, rgba(6,49,76,1) 50%, rgba(9,73,113,1) 100%)',
             green_gradient: 'linear-gradient(to right, #00AD46 0%, #00E05A 50%, #0AFF6C 100%)',
             facebook_gradient: 'linear-gradient(to right, #007BE5 0%, #FFFFFF 100%)',
+            google_gradient: 'linear-gradient(to right, #DB4437 0%, #FFFFFF 100%)',
+
+            dark_500: '#031927',
+            dark_300: '#042539',
 
             collor_paragraph: '#01051A',
             primmary: '#FF6600',
