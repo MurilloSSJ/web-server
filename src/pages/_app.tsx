@@ -3,17 +3,31 @@ import type { AppProps } from 'next/app'
 import { Container, Content } from './style'
 import { SideMenu } from '@/components/menu/sideMenu'
 import { useRouter } from 'next/router'
+import { ToastContainer } from 'react-toastify'
+import { AuthContextProvider } from '@/contexts/authContext'
+import 'react-toastify/dist/ReactToastify.css'
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter()
   const isAuthRoute = asPath === '/' || asPath.startsWith('/auth')
   return (
-    <Container>
-      {!isAuthRoute && <SideMenu />}
-      <Content>
-        <Component {...pageProps} />
-      </Content>
-    </Container>
+    <AuthContextProvider>
+      <Container>
+        {!isAuthRoute && <SideMenu />}
+        <Content>
+          <Component {...pageProps} />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            draggable={false}
+            closeOnClick
+            pauseOnHover
+          />
+        </Content>
+      </Container>
+    </AuthContextProvider>
   )
 }

@@ -13,3 +13,15 @@ export const InputStyled = styled('input', {
     borderRadius: ".25rem",
 
 })
+export const ErrorMessage = styled('span', {
+    color: "$red_200",
+    fontSize: "1.2rem",
+    fontFamily: 'Inter',
+    fontWeight: "200",
+    padding: ".5rem 0",
+    display: "block",
+    textAlign: "center",
+    width: "100%",
+    maxWidth: "100%",
+    marginTop: ".5rem",
+})

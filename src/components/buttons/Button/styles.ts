@@ -7,7 +7,7 @@ const gradientAnimationKeyframe = keyframes({
     '100%': { backgroundPosition: '0% 50%' },
 })
 
-export const ButtonStyled = styled('div', {
+export const ButtonStyled = styled('button', {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

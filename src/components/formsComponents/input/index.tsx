@@ -1,6 +1,6 @@
 import { LabelComponent } from "../labelComponent";
 import { IconType } from "react-icons"
-import { InputStyled } from "./styles";
+import { ErrorMessage, InputStyled } from "./styles";
 import { FlexContainer } from "@/components/containers/flexContainer";
 
 interface InputComponentProps {
@@ -9,14 +9,17 @@ interface InputComponentProps {
     name: string;
     label?: string;
     IconElement?: IconType;
+    errors?: string
+    register: any
 
 }
 
-export const InputComponent = ({ placeholder, id, name, label, IconElement }: InputComponentProps) => {
-    if (IconElement) {
+export const InputComponent = ({ placeholder, id, name, label, IconElement, register, errors }: InputComponentProps) => {
+    if (errors) {
+        console.log(errors)
     }
     return (
-        <FlexContainer alignItems="center" justifyContent="center">
+        <FlexContainer alignItems="center" justifyContent="center" direction="col">
             {label &&
                 <LabelComponent htmlFor={name} text={label}></LabelComponent>
             }
@@ -26,6 +29,7 @@ export const InputComponent = ({ placeholder, id, name, label, IconElement }: In
                         {
                             position: 'absolute',
                             top: '50%',
+                            bottom: '50%',
                             right: '10px',
                             transform: 'translateY(-50%)'
                         }
@@ -34,7 +38,8 @@ export const InputComponent = ({ placeholder, id, name, label, IconElement }: In
                     color="#EFF1ED"
                 />
             }
-            <InputStyled placeholder={placeholder} id={id} name={name} ></InputStyled>
+            {errors && <ErrorMessage>*{errors}</ErrorMessage>}
+            <InputStyled placeholder={placeholder} id={id} name={name} {...register(`${id}`)}></InputStyled>
         </FlexContainer>
     )
 }

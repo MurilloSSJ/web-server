@@ -34,8 +34,7 @@ export const GradientButton = ({ text, onClick, type, disabled, IconElement, Ico
             }
             <ButtonStyled
                 //disabled={disabled ? disabled : false}
-                onClick={onClick}
-                //type={type}
+                type={type}
                 gradient={gradient ? gradient : "primmary"}
             >
                 {text}
