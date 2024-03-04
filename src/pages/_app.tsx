@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { ToastContainer } from 'react-toastify'
 import { AuthContextProvider } from '@/contexts/authContext'
 import 'react-toastify/dist/ReactToastify.css'
+import 'reactflow/dist/style.css';
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {

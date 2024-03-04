@@ -1,5 +1,5 @@
 import { FlexContainer } from "@/components/containers/flexContainer";
-import { NodeGroup, NodeStyled } from "./styles";
+import { NodeGroup, NodeStyled } from "../styles";
 
 interface DragProps {
     event: any;

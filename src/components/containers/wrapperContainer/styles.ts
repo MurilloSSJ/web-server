@@ -8,7 +8,7 @@ export const WrapperContainer = styled('div', {
     width: '100%',
     height: '100%',
     color: '$white',
-    backgroundColor: '$dark_300',
+    backgroundColor: '$dark_200',
     borderRadius: '.25rem',
     gapColumn: '10px',
     variants: {

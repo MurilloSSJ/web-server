@@ -5,5 +5,6 @@ export const TextCountWrapper = styled('p', {
     '-webkit-background-clip': 'text',
     '-webkit-text-fill-color': 'transparent',
     fontSize: '3.5rem',
+    fontFamily: 'VALORANT, sans-serif',
     fontWeight: '900',
 })

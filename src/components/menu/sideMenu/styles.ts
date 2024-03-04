@@ -13,6 +13,7 @@ export const MenuContainer = styled('div', {
     backgroundColor: '$dark_300',
     padding: '20px',
     top: '0',
+
 })
 
 export const ContainerOption = styled('ul', {
@@ -25,8 +26,11 @@ export const ContainerOption = styled('ul', {
 
 export const MenuItem = styled('li', {
     display: 'flex',
+    rowGap: '1rem',
+    columnGap: '.6rem',
     cursor: 'pointer',
     paddingBottom: '.5rem',
+    alignItems: 'center',
     'transition-duration': '300ms',
     '-webkit-transition': 'all 300ms ease',
     '-moz-transition': 'all 300ms ease',
@@ -38,17 +42,17 @@ export const MenuItem = styled('li', {
         transform: 'scale(1.1)',
         svg: {
             transition: 'all 1000ms ease',
-            color: '$green_100',
+            color: '$primmary_100',
         },
     },
     '&.active': {
         transform: 'scale(1.1)',
         svg: {
-            color: '$green_300',
+            color: '$primmary_100',
         },
     },
     svg: {
-        transition: 'all 1000ms ease',
+        transition: 'all 50ms ease',
         color: '$white',
     },
 })

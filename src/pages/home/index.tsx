@@ -16,8 +16,9 @@ const Home = () => {
                 <CounterGraph Icon={PiUsers} counter={15} />
             </FlexContainer>
             <FlexContainer justifyContent="center" gapX={50}>
-                <PieChart />
-                <BarGraph data={[1, 2, 3]} labels={[]} title="Dag Status" />
+                <></>
+                {/* <PieChart />
+                <BarGraph data={[1, 2, 3]} labels={[]} title="Dag Status" /> */}
             </FlexContainer>
         </FlexContainer>
     )

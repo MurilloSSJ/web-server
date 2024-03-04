@@ -15,7 +15,7 @@ export const Table = ({ data, columns }: TableProps) => {
             <Header>
                 {columns.map((column, index) => {
                     return (
-                        <FlexContainer key={index} justifyContent="center" alignItems="center">{column}</FlexContainer>
+                        <FlexContainer key={index} justifyContent="center" alignItems="center" fontFamily="VALORANT">{column}</FlexContainer>
                     )
                 })}
             </Header>
@@ -38,7 +38,9 @@ export const Table = ({ data, columns }: TableProps) => {
                                     )
                                 }
                                 return (
-                                    <FlexContainer key={index} justifyContent="center" alignItems="center">{cell.value}</FlexContainer>
+                                    <FlexContainer key={index} justifyContent="center" alignItems="center">
+                                        <span style={{ fontSize: '1rem', fontWeight: '600' }}>{cell.value}</span>
+                                    </FlexContainer>
                                 )
                             })}
                         </CellStyled>

@@ -1,3 +1,4 @@
+import { darkBlueTheme } from "@/styles";
 import { SectionTitleStyled } from "./styles";
 
 interface SectionTitleProps {

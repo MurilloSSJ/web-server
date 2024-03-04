@@ -29,7 +29,7 @@ export const CellStyled = styled('div', {
     fontSize: '1rem',
     letterSpacing: '0.1rem',
     lineHeight: '1.5rem',
-    backgroundColor: '$dark_500',
+    backgroundColor: '$dark_200',
     variants: {
         align: {
             left: {
@@ -55,7 +55,7 @@ export const StatusStyled = styled('span', {
     variants: {
         status: {
             true: {
-                backgroundColor: '$green_300',
+                backgroundColor: '$green',
             },
             false: {
                 backgroundColor: '$red',

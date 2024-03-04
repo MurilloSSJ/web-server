@@ -15,6 +15,7 @@ import { authApi } from '@/services/authApi';
 import { toast } from 'react-toastify'
 import React from 'react';
 import { AuthContext } from '@/contexts/authContext';
+import { FormComponent } from '@/components/formsComponents/form';
 
 export default function Home() {
   const { signIn } = React.useContext(AuthContext)
@@ -51,20 +52,14 @@ export default function Home() {
           <FlexContainer alignItems='center' justifyContent='center' gapX={200}>
             <FlexContainer alignItems='center' justifyContent='center'>
               <FlexContainer direction='col' alignItems='center' justifyContent='center' gapY={80} width='fitContent'>
-                <form onSubmit={handleSubmit(handleLogin)}>
+                <FormComponent onSubmit={handleSubmit(handleLogin)} gapY={50}>
                   <FlexContainer direction='col' alignItems='center' justifyContent='center' gapY={20}>
-
                     <InputComponent placeholder='Username' id='username' name='username' IconElement={CiUser} register={register} errors={errors.username?.message}></InputComponent>
                     <InputComponent placeholder='Password' id='password' name='password' IconElement={CiLock} register={register} errors={errors.password?.message}></InputComponent>
-
                   </FlexContainer>
-                  <GradientButton text='Login' IconElement={FaArrowRight} IconPosition='right' iconColor='#000000' type='submit' />
-                </form>
+                  <GradientButton text='Login' IconElement={FaArrowRight} IconPosition='right' iconColor='#000000' type='submit' marginTop={50} />
+                </FormComponent>
               </FlexContainer>
-            </FlexContainer>
-            <FlexContainer direction='col' gapY={20}>
-              <GradientButton text='Login With Google' IconElement={FaGoogle} IconPosition='left' gradient='google'></GradientButton>
-              <GradientButton text='Login With Facebook' IconElement={FaFacebook} IconPosition='left' gradient='facebook'></GradientButton>
             </FlexContainer>
           </FlexContainer>
         </FlexContainer>

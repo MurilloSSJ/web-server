@@ -21,9 +21,14 @@ interface FlexContainerProps {
     width?: 'screen' | '100%' | 'fitContent';
     position?: 'absolute' | 'relative';
     dark?: boolean;
+    fontFamily?: string;
+    customClass?: string;
+    lightBackground?: boolean;
+    marginX?: number;
 }
 
-export const FlexContainer = ({ children, direction, alignItems, justifyContent, gapX, gapY, gradient, height, grow, paddingX, paddingY, paddingTop, paddingBottom, paddingLeft, paddingRight, width, position, dark }: FlexContainerProps) => {
+export const FlexContainer = ({ children, direction, alignItems, justifyContent, gapX, gapY, gradient, height, grow, paddingX, paddingY, paddingTop, paddingBottom, paddingLeft, paddingRight, width, position, fontFamily, customClass, lightBackground, marginX }: FlexContainerProps) => {
+    console.log(lightBackground)
     return (
         <FlexContainerStyled
             direction={direction ? direction : 'row'}
@@ -41,11 +46,13 @@ export const FlexContainer = ({ children, direction, alignItems, justifyContent,
                     paddingLeft: `${paddingLeft ? paddingLeft : 0}px`,
                     paddingRight: `${paddingRight ? paddingRight : 0}px`,
                     padding: `${paddingY ? paddingY : 0}px ${paddingX ? paddingX : 0}px`,
+                    fontFamily: `${fontFamily ? fontFamily : 'Poppins, sans-serif'}`,
                 }
             }
             position={position ? position : 'relative'}
             width={width ? width : '100%'}
-            dark={dark ? dark : false}
+            lightBackground={lightBackground ? lightBackground : false}
+            className={customClass ? customClass : ''}
         >
             {children}
         </FlexContainerStyled>

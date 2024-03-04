@@ -28,6 +28,14 @@ export const FlexContainerStyled = styled('div', {
                 flexDirection: 'column-reverse'
             }
         },
+        lightBackground: {
+            true: {
+                background: '$dark_200'
+            },
+            false: {
+
+            }
+        },
         alignItems: {
             center: {
                 alignItems: 'center'
@@ -89,11 +97,6 @@ export const FlexContainerStyled = styled('div', {
             false: {
 
             }
-        },
-        dark: {
-            true: {
-                background: '$dark_500'
-            },
         },
         height: {
             screen: {

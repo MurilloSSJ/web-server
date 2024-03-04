@@ -14,7 +14,7 @@ import { PiArchiveBox } from "react-icons/pi";
 export const SideMenu = () => {
     return (
         <MenuContainer>
-            <Image src={Logo} alt="Logo Image" width={60} />
+            <Image src={Logo} alt="Logo Image" width={50} />
             <FlexContainer alignItems="center" justifyContent="start" direction="col" paddingTop={50}>
                 <ContainerOption>
                     <MenuItem className="active">

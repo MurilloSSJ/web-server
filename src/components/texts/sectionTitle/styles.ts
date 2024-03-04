@@ -2,7 +2,7 @@ import { styled } from "@/styles";
 
 export const SectionTitleStyled = styled('h2', {
     color: "$white",
-    fontFamily: 'Inter',
+    fontFamily: 'VALORANT, sans-serif',
     fontWeight: 700,
     variants: {
         gradient: {

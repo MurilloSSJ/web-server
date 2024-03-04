@@ -7,7 +7,8 @@ export const AddButtonWrapper = styled('span', {
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '50%',
-    background: '$green_gradient',
+    background: '$principal_gradient',
+    transition: 'all 300ms ease',
     variants: {
         position: {
             relative: {
@@ -17,5 +18,9 @@ export const AddButtonWrapper = styled('span', {
                 position: 'absolute',
             }
         }
+    },
+    "&:hover": {
+        cursor: 'pointer',
+        scale: 1.2
     }
 })

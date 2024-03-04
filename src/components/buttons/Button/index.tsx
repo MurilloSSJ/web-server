@@ -11,10 +11,11 @@ interface GradientButtonProps {
     IconPosition?: 'left' | 'right';
     iconColor?: string;
     gradient?: 'primmary' | 'facebook' | 'google';
+    marginTop?: number;
 
 }
 
-export const GradientButton = ({ text, onClick, type, disabled, IconElement, IconPosition, gradient, iconColor }: GradientButtonProps) => {
+export const GradientButton = ({ text, onClick, type, disabled, IconElement, IconPosition, gradient, iconColor, marginTop }: GradientButtonProps) => {
     return (
         <FlexContainer alignItems="center" gapX={20}>
             {IconElement &&
@@ -25,7 +26,7 @@ export const GradientButton = ({ text, onClick, type, disabled, IconElement, Ico
                             top: '50%',
                             right: `${IconPosition === 'right' ? '10px' : 'unset'}`,
                             left: `${IconPosition === 'left' ? '20px' : 'unset'}`,
-                            transform: 'translateY(-50%)'
+                            transform: 'translateY(-50%)',
                         }
                     }
                     size={30}

@@ -12,7 +12,7 @@ export const globalStyles = globalCss({
   body: {
     '-webkit-font-smoothing': 'antialiased',
     display: 'flex',
-    backgroundColor: '#f8f8ff',
+    backgroundColor: '$dark_100',
     flexDirection: 'column',
     width: '100%',
     color: '$textColor',
@@ -92,6 +92,12 @@ export const globalStyles = globalCss({
 
   button: {
     cursor: 'pointer',
+  },
+  '&.ace_editor, &.ace_editor div': {
+    fontFamily: 'monospace !important',
+    direction: 'ltr',
+    textAlign: 'left',
+    fontSize: '16px',
   },
 
   fieldset: {
