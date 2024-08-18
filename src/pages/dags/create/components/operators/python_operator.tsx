@@ -1,9 +1,9 @@
-import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@radix-ui/react-dialog"
 import { BaseOperator, BaseOperatorWithoutFlow } from "./base_operator"
 import { IoLogoPython } from "react-icons/io"
 import { BaseOperatorForm } from "./forms/base_form"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { pythonOperatorSchema } from "../../schemas/python_operator"
@@ -12,6 +12,8 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CodeEditor } from "@/components/aceEditor"
 import { DialogClose } from "@/components/ui/dialog"
+import { Edge } from "@xyflow/react"
+import { getLayoutedElements } from "../.."
 
 export const PythonOperator = () => {
     return (
@@ -24,7 +26,8 @@ type PythonOperatorWithoutFlowProps = {
     nodes: any
     setFunctions: (functions: any) => void
     functions: any
-    onLayout: () => void
+    edges: any
+    setEdges: (edges: any) => void
 }
 
 export const PythonOperatorWithoutFlow = (props: PythonOperatorWithoutFlowProps) => {
@@ -40,16 +43,21 @@ export const PythonOperatorWithoutFlow = (props: PythonOperatorWithoutFlowProps)
         }
     }
     const onSubmit = (data: z.infer<typeof pythonOperatorSchema>) => {
-        console.log(data)
-        props.setNodes([...props.nodes, {
+        const nodes = ([...props.nodes, {
             id: data.task_id,
             type: 'pythonOperator',
             data: { label: data.task_id, python_callable: data.python_callable },
-            position: [0, 0]
+            position: {x:0, y:0},
+            handles: [
+                { type: 'source', position: 'right', id: 'a' },
+                { type: 'target', position: 'left', id: 'b' }
+            ]
         }]
         )
+        const { nodesLayout, edgesLayout } = getLayoutedElements(nodes, props.edges, "LR");
+        props.setNodes([...nodesLayout]);
+        props.setEdges([...edgesLayout]);
         setOpen(false)
-        props.onLayout()
     }
     const [open, setOpen] = useState(false);
     return (
@@ -62,6 +70,7 @@ export const PythonOperatorWithoutFlow = (props: PythonOperatorWithoutFlowProps)
             </DialogTrigger>
             <DialogContent >
                     <div className="fixed left-0 right-0 top-1/2 transform -translate-y-1/2 p-10 z-60 w-fit mx-auto border-2 border-black rounded-sm overflow-scroll">
+                    <DialogTitle>PythonOperator Forms</DialogTitle>
                     <Form {...operatorForm}>
                         <form onSubmit={operatorForm.handleSubmit(onSubmit)} className="space-y-8">
                         <FormField

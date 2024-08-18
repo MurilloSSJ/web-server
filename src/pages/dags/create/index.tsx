@@ -13,47 +13,60 @@ import {
   type OnConnect,
   Node as TypeNode,
   Edge,
+  Connection,
 } from "@xyflow/react";
 import { FormNewDag } from "./components/form_new_dag";
 import { DialogTrigger, DialogContent, Dialog } from "@radix-ui/react-dialog"
 import { Button } from "@/components/ui/button";
 import { DagsOperators } from "./components/operators";
 import { PythonOperator } from "./components/operators/python_operator";
+import { AnimatedSVGEdge } from "./components/edge";
 import dagre from 'dagre';
 
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
-const getLayoutedElements = (nodes: Array<TypeNode>, edges: Array<Edge>, direction = 'LR') => {
+export const getLayoutedElements = (nodes: Array<TypeNode>, edges: Array<Edge>, direction = 'LR') => {
     dagreGraph.setGraph({ rankdir: direction });
     nodes.forEach((node) => {
-      dagreGraph.setNode(node.id, { width: node.width, height: node.height });
+      const width = node.width || 500;
+      const height = node.height || 50;
+      dagreGraph.setNode(node.id, { width: width, height: height });
     });
     edges.forEach((edge) => {
       dagreGraph.setEdge(edge.source, edge.target);
     });
-  
     dagre.layout(dagreGraph);
   
     const newNodes = nodes.map((node) => {
+      console.log(node, "node")
       const nodeWithPosition = dagreGraph.node(node.id);
       const newNode = {
         ...node,
         targetPosition: 'left',
         sourcePosition: 'right',
-        // We are shifting the dagre node position (anchor=center center) to the top left
-        // so it matches the React Flow node anchor point (top left).
         position: {
-          x: nodeWithPosition.x - (node.width ? node.width : 150) / 2,
-          y: nodeWithPosition.y - (node.height ? node.height : 20) / 2,
+          x: nodeWithPosition.x - (node.width ? node.width : 500) / 2,
+          y: nodeWithPosition.y - (node.height ? node.height : 50) / 2,
         },
       };
-  
       return newNode;
     });
+
+    const newEdges = edges.map((edge) => {
+      const newEdge = {
+        ...edge,
+        sourceX: dagreGraph.node(edge.source).x,
+        sourceY: dagreGraph.node(edge.source).y,
+        targetX: dagreGraph.node(edge.target).x,
+        targetY: dagreGraph.node(edge.target).y,
+        type: 'animatedSvg',
+      };
+      return newEdge;
+    })
   
-    return { nodes: newNodes, edges };
-  };
+    return { nodesLayout: newNodes, edgesLayout: newEdges };
+  }
 
 const CreateDagPage = () => {
     const nodeTypes = {
@@ -62,11 +75,14 @@ const CreateDagPage = () => {
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [functions, setFunctions] = useState<Array<string>>([])
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-    const onLayout = (nodeFix: Array<TypeNode>, edgeFix: Array<Edge>) => {
-        const { nodeFixed, edgeFixed } = getLayoutedElements(nodeFix, edgeFix, "LR");
-        setNodes([...nodeFixed]);
-        setEdges([...edgeFixed]);
-    }
+    const onConnect: OnConnect = useCallback((params: Connection) => {
+        const { nodesLayout, edgesLayout } = getLayoutedElements(nodes, addEdge(params, edges), "LR");
+        setNodes([...nodesLayout]);
+        setEdges([...edgesLayout]);
+    },[setEdges, edges]);
+    const edgeTypes = {
+      animatedSvg: AnimatedSVGEdge,
+    };
     return (
         <>
             <Dialog>
@@ -78,11 +94,14 @@ const CreateDagPage = () => {
                 </DialogContent>
             </Dialog>
             <main className="flex flex-col h-screen w-screen z-5">
-                <DagsOperators nodes={nodes} setNodes={setNodes} functions={functions} setFunctions={setFunctions} onLayout={onLayout}/>
+                <DagsOperators nodes={nodes} setNodes={setNodes} functions={functions} setFunctions={setFunctions} edges={edges} setEdges={setEdges}/>
                 <ReactFlow 
                     style={{ height: '100%', zIndex: "4" }} 
                     nodeTypes={nodeTypes} 
-                    nodes={nodes}                  
+                    nodes={nodes}
+                    onConnect={onConnect}
+                    edges={edges}
+                    edgeTypes={edgeTypes}
                 >
                         <Background  variant={BackgroundVariant.Dots}/>
                 </ReactFlow>

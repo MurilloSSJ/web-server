@@ -8,7 +8,8 @@ type DagsOperatorsProps = {
     nodes: any
     setFunctions: (functions: any) => void
     functions: any
-    onLayout: (nodes: Array<TypeNode>, edges: Array<Edge>) => void
+    edges: any
+    setEdges: (edges: any) => void
 }
 
 export const DagsOperators = (props: DagsOperatorsProps) => {
@@ -19,7 +20,8 @@ export const DagsOperators = (props: DagsOperatorsProps) => {
                 nodes={props.nodes} 
                 setFunctions={props.setFunctions} 
                 functions={props.functions}
-                onLayout={props.onLayout}
+                edges={props.edges}
+                setEdges={props.setEdges}
             />
             <SQLOperatorWithoutFlow/>
             <EmptyOperatorWithoutFlow/>
