@@ -1,69 +1,36 @@
-import { InputComponent } from '@/components/formsComponents/input'
-import { FlexContainer } from '@/components/containers/flexContainer'
-import { CiUser } from "react-icons/ci";
-import { CiLock } from "react-icons/ci";
-import { SectionTitle } from '@/components/texts/sectionTitle';
-import { GradientButton } from '@/components/buttons/Button';
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { ParagraphStyled } from '@/components/texts/paragraph/styles';
-import { HeaderMenu } from '@/components/menu/headerMenu';
-import { FaArrowRight, FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { LoginSchema, LoginSchemaType } from '@/schemas/login';
-import { authApi } from '@/services/authApi';
-import { toast } from 'react-toastify'
-import React from 'react';
-import { AuthContext } from '@/contexts/authContext';
-import { FormComponent } from '@/components/formsComponents/form';
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableHeader, TableCaption, TableHead, TableRow, TableCell } from "@/components/ui/table";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { signIn } = React.useContext(AuthContext)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginSchemaType>({
-    resolver: zodResolver(LoginSchema),
-  })
-  async function handleLogin(data: any) {
-    try {
-      await signIn(data)
-      toast.success('Login realizado com sucesso')
-    } catch (err) {
-      console.log(err)
-      toast.error('Usuário ou senha inválidos, tente novamente')
-    }
-
-    console.log(data)
-  }
   return (
-    <FlexContainer alignItems='start' justifyContent='start' direction='col' gradient='dark' height='screen' width='screen'>
-      <FlexContainer alignItems='center' justifyContent='center' direction='col'>
-        <HeaderMenu />
-      </FlexContainer>
-      <FlexContainer alignItems='center' justifyContent='center'>
-        <FlexContainer direction='col' width='fitContent' alignItems='center' justifyContent='center'>
-          <FlexContainer alignItems='center' justifyContent='center' direction='col' paddingY={100}>
-            <SectionTitle text='Login to Your Account' gradient='primary' />
-            <ParagraphStyled>Access to your account to view admin platformer,
-              and create your dags.</ParagraphStyled>
-          </FlexContainer>
-          <FlexContainer alignItems='center' justifyContent='center' gapX={200}>
-            <FlexContainer alignItems='center' justifyContent='center'>
-              <FlexContainer direction='col' alignItems='center' justifyContent='center' gapY={80} width='fitContent'>
-                <FormComponent onSubmit={handleSubmit(handleLogin)} gapY={50}>
-                  <FlexContainer direction='col' alignItems='center' justifyContent='center' gapY={20}>
-                    <InputComponent placeholder='Username' id='username' name='username' IconElement={CiUser} register={register} errors={errors.username?.message}></InputComponent>
-                    <InputComponent placeholder='Password' id='password' name='password' IconElement={CiLock} register={register} errors={errors.password?.message}></InputComponent>
-                  </FlexContainer>
-                  <GradientButton text='Login' IconElement={FaArrowRight} IconPosition='right' iconColor='#000000' type='submit' marginTop={50} />
-                </FormComponent>
-              </FlexContainer>
-            </FlexContainer>
-          </FlexContainer>
-        </FlexContainer>
-      </FlexContainer>
-    </FlexContainer>
-  )
+    <main
+      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+    >
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>DagName</TableHead>
+            <TableHead>Principal Operator</TableHead>
+            <TableHead>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell className="font-medium">INV001</TableCell>
+            <TableCell className="font-medium">INV001</TableCell>
+            <TableCell className="font-medium">INV001</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">INV001</TableCell>
+            <TableCell className="font-medium">INV001</TableCell>
+            <TableCell className="font-medium">INV001</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <Button>Click me</Button>
+    </main>
+  );
 }
