@@ -4,7 +4,7 @@ import { TbSql } from "react-icons/tb";
 import { z } from "zod";
 import { sqlOperatorSchema } from "../../schemas/sql_operator";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { getLayoutedElements } from "../../dagree";
+import { getLayoutedElements } from "../../utils/dagree";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";

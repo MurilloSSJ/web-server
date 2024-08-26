@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CodeEditor } from "@/components/aceEditor"
-import { getLayoutedElements } from "../../dagree";
 
 
 export const BashOperator = (props: BaseOperatorOnlyFlowProps) => {
