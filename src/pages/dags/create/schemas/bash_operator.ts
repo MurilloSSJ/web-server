@@ -1,8 +1,8 @@
 "use client"
 import { z } from "zod"
 import { baseOperatorSchema } from "./base_operator"
-export const pythonOperatorSchema = z.object({
+
+export const bashOperatorSchema = z.object({
     ...baseOperatorSchema.shape,
-    python_callable: z.string(),
-    function: z.string(),
+    bash_command: z.string().max(2000),
 })

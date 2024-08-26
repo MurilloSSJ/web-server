@@ -1,5 +1,5 @@
-import React from 'react';
-import { BaseEdge, EdgeProps, getSmoothStepPath } from '@xyflow/react';
+import React, { useState } from 'react';
+import { BaseEdge, EdgeLabelRenderer, EdgeProps, getSmoothStepPath, useReactFlow } from '@xyflow/react';
 
 export function AnimatedSVGEdge({
   id,
@@ -9,8 +9,9 @@ export function AnimatedSVGEdge({
   targetY,
   sourcePosition,
   targetPosition,
+
 }: EdgeProps) {
-  const [edgePath] = getSmoothStepPath({
+  const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
     sourceY,
     sourcePosition,
@@ -18,11 +19,10 @@ export function AnimatedSVGEdge({
     targetY,
     targetPosition,
   });
-
   return (
     <>
       <BaseEdge id={id} path={edgePath} />
-      <circle r="10" fill="#ff0073">
+      <circle r="8" fill="#ff0073">
         <animateMotion dur="2s" repeatCount="indefinite" path={edgePath} />
       </circle>
     </>
