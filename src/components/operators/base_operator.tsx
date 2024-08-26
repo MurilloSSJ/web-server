@@ -57,3 +57,5 @@ export const BaseOperator = ({ operator, Icon, id, data }: BaseOperatorFlowProps
         </>
     )
 }
+
+export default BaseOperator
