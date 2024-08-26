@@ -1,34 +1,20 @@
-import { globalStyles } from '@/styles/global'
-import type { AppProps } from 'next/app'
-import { Container, Content } from './style'
-import { SideMenu } from '@/components/menu/sideMenu'
-import { useRouter } from 'next/router'
-import { ToastContainer } from 'react-toastify'
-import { AuthContextProvider } from '@/contexts/authContext'
-import 'react-toastify/dist/ReactToastify.css'
-import 'reactflow/dist/style.css';
-globalStyles()
+import "@/styles/globals.css";
+import '@xyflow/react/dist/style.css';
+import { Inter as FontSans } from "next/font/google"
+import type { AppProps } from "next/app";
+
+import { cn } from "@/lib/utils"
+ 
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { asPath } = useRouter()
-  const isAuthRoute = asPath === '/' || asPath.startsWith('/auth')
   return (
-    <AuthContextProvider>
-      <Container>
-        {!isAuthRoute && <SideMenu />}
-        <Content>
-          <Component {...pageProps} />
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            draggable={false}
-            closeOnClick
-            pauseOnHover
-          />
-        </Content>
-      </Container>
-    </AuthContextProvider>
+    <main className={cn("min-h-screen bg-background font-sans antialiased flex flex-col items-center justify-between",
+    fontSans.variable)}>
+      <Component {...pageProps} />
+    </main>
   )
 }
