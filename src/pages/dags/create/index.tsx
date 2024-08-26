@@ -11,19 +11,18 @@ import {
   ReactFlowProvider,
   ReactFlow
 } from "@xyflow/react";
-import { FormNewDag } from "./components/form_new_dag";
+import { FormNewDag } from "@/components/forms/form_new_dag";
 import { DialogTrigger, DialogContent, Dialog } from "@radix-ui/react-dialog"
 import { Button } from "@/components/ui/button";
-import { DagsOperators } from "./components/operators";
-import { PythonOperator } from "./components/operators/python_operator";
-import { AnimatedSVGEdge } from "./components/edge";
-import { EmptyOperator } from "./components/operators/dummy_operator";
-import { SQLOperator } from "./components/operators/sql_operator";
-import { getLayoutedElements } from "./dagree";
-import { TaskGroup } from "./components/operators/task_group";
-import { BashOperator } from "./components/operators/bash_operator";
+import { DagsOperators } from "../../../components/flow/operators";
+import { PythonOperator } from "@/components/operators/python_operator";
+import { AnimatedSVGEdge } from "../../../components/flow/edge";
+import { EmptyOperator } from "@/components/operators/dummy_operator";
+import { SQLOperator } from "@/components/operators/sql_operator";
+import { getLayoutedElements } from "../../../utils/dagree";
+import { BashOperator } from "@/components/operators/bash_operator";
 import { z } from "zod";
-import { dagFormSchema } from "./schemas/dag_form";
+import { dagFormSchema } from "../../../schemas/dag_form";
 import { dagFactoryApi } from "@/clients/dag_factory_api";
 
 const CreateDagPage = () => {

@@ -1,8 +1,8 @@
-import { PythonOperatorWithoutFlow } from "./operators/python_operator";
-import { SQLOperatorWithoutFlow } from "./operators/sql_operator";
-import { EmptyOperatorWithoutFlow } from "./operators/dummy_operator";
+import { PythonOperatorWithoutFlow } from "../operators/python_operator";
+import { SQLOperatorWithoutFlow } from "../operators/sql_operator";
+import { EmptyOperatorWithoutFlow } from "../operators/dummy_operator";
 import { Edge, Node as TypeNode } from "@xyflow/react";
-import { BashOperatorWithoutFlow } from "./operators/bash_operator";
+import { BashOperatorWithoutFlow } from "../operators/bash_operator";
 
 type DagsOperatorsProps = {
     setNodes: (nodes: any) => void
