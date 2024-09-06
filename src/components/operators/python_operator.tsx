@@ -103,22 +103,6 @@ export const PythonOperatorWithoutFlow = (props: PythonOperatorWithoutFlowProps)
                             />
                             <FormField
                                 control={operatorForm.control}
-                                name="function"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Task Group</FormLabel>
-                                        <FormControl>
-                                            <Input type="hidden" {...field} defaultValue="" />
-                                        </FormControl>
-                                        <FormDescription>
-                                            This is the task group name
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={operatorForm.control}
                                 name="python_callable"
                                 render={({ field }) => (
                                     <FormItem>

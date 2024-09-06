@@ -1,7 +1,5 @@
 import { IconType } from "react-icons";
 import { Handle, Position, Node as TypeNode } from "@xyflow/react";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { useState } from "react";
 type BaseOperatorProps = {
     operator: string
     Icon: IconType,

@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CodeEditor } from "@/components/aceEditor"
-import { getLayoutedElements } from "../../dagree";
 
 
 export const BashOperator = (props: BaseOperatorOnlyFlowProps) => {
@@ -38,7 +37,8 @@ export const BashOperatorWithoutFlow = (props: BashOperatorWithoutFlowProps) => 
         const nodes = ([...props.nodes, {
             id: data.task_id,
             type: 'bashOperator',
-            data: { label: data.task_id, python_callable: data.bash_command, task_group: data.task_group },
+            task_group: data.task_group,
+            data: { label: data.task_id, task_group: data.task_group, bash_command: data.bash_command },
             position: { x: 0, y: 0 },
             handles: [
                 { type: 'source', position: 'right', id: 'a' },
@@ -84,7 +84,7 @@ export const BashOperatorWithoutFlow = (props: BashOperatorWithoutFlowProps) => 
                                 name="task_group"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Task Id</FormLabel>
+                                        <FormLabel>Task Group</FormLabel>
                                         <FormControl>
                                             <Input placeholder="task_group" {...field} />
                                         </FormControl>

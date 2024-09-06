@@ -24,12 +24,6 @@ export const DagsOperators = (props: DagsOperatorsProps) => {
                 edges={props.edges}
                 setEdges={props.setEdges}
             />
-            <SQLOperatorWithoutFlow
-                setNodes={props.setNodes}
-                nodes={props.nodes}
-                edges={props.edges}
-                setEdges={props.setEdges}
-            />
             <EmptyOperatorWithoutFlow
                 setNodes={props.setNodes}
                 nodes={props.nodes}

@@ -70,12 +70,12 @@ export const EmptyOperatorWithoutFlow = (props: BaseOperatorWithoutFlowProps) =>
                                 name="node_group"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Task Id</FormLabel>
+                                        <FormLabel>Task Group</FormLabel>
                                         <FormControl>
                                             <Input placeholder="task_id" {...field} />
                                         </FormControl>
                                         <FormDescription>
-                                            This is name of Node Group.
+                                            This is name of Task Group (Optional).
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>

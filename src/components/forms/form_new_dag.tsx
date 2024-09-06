@@ -33,10 +33,10 @@ export const FormNewDag = (props: DagForm) => {
             <FormItem>
               <FormLabel>Dag Name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="dag_python" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name.
+                This is your dag_id.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -47,12 +47,12 @@ export const FormNewDag = (props: DagForm) => {
           name="scheduler_interval"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Dag Name</FormLabel>
+              <FormLabel>Interval (Cron)</FormLabel>
               <FormControl>
                 <Input placeholder="* * * * *" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name.
+                This is a interval for your dag
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -63,7 +63,7 @@ export const FormNewDag = (props: DagForm) => {
           name="start_date"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Dag Name</FormLabel>
+              <FormLabel>Start Date</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
