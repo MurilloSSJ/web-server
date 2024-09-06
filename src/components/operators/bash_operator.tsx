@@ -60,7 +60,7 @@ export const BashOperatorWithoutFlow = (props: BashOperatorWithoutFlowProps) => 
             </DialogTrigger>
             <DialogContent >
                 <div className="fixed left-0 right-0 top-1/2 transform -translate-y-1/2 p-10 z-60 w-fit mx-auto border-2 border-black rounded-sm overflow-scroll bg-white">
-                    <DialogTitle>PythonOperator Forms</DialogTitle>
+                    <DialogTitle>Bash Operator Forms</DialogTitle>
                     <Form {...operatorForm}>
                         <form onSubmit={operatorForm.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
